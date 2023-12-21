@@ -1,5 +1,9 @@
 #include "File_Lecture.h"
 
+static ptr_func_anal_ports arr_funcs_ports_hw[1] = {analyze_BB_Black_ports};
+static ptr_func_modul_exp arr_funcs_exp_modul[0] = {};
+
+
 //Comprobar mejor los puertos segun su uso.
 static int8_t analyze_BB_Black_ports(uint8_t port_id, uint8_t port_type)
 {
@@ -95,6 +99,7 @@ int8_t check_experiment_config_values(uint32_t* read_vals, Experiment_Config* ex
     sprintf(&hw->save_path[0],"capture_values/%s/%d_%d_%d",
             modulations_types[read_vals[0]], (tm->tm_year+1900), (tm->tm_mon+1), tm->mday);
 
-    //return ptr_func_exp_capture(&read_vals[3], exp_config);
+    ptr_func_exp_capture(&read_vals[3], exp_config);
+    return 0;
 }
 
